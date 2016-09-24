@@ -9,29 +9,26 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 public class ConverterTest {
-    private String csvString;
-    private String jsonString;
+    private String csv;
+    private String json;
 
-    @Before
+	@Before
     public void setUp() {
+		Converter c = new Converter();
+		csv = c.readTheFile("src/test/resources/grades.csv");
+        json = c.readTheFile("src/test/resources/grades.json");
+	}
 
-    }
-    
     @Test
     public void testConvertCSVtoJSON() {
-        // You should test using the files in src/test/resources.
-        assertTrue(false);
+        assertTrue(Converter.jsonStringsAreEqual(Converter.csvToJson(csv), json));
     }
 
     @Test
     public void testConvertJSONtoCSV() {
-        // You should test using the files in src/test/resources.
-        assertTrue(false);
+        assertEquals(Converter.jsonToCsv(json), csv);
     }
 }
-
-
-
 
 
 
